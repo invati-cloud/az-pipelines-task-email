@@ -1,0 +1,60 @@
+{
+  "name": "invati-devops-task-email",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "npm run jest",
+    "prebuild": "npm install --no-optional",
+    "build": "npm run prebuild && npm run build:emailreport && npm run build:prinsights",
+    "build:t1": "npm run prebuild && npm run build:emailreport",
+    "build:t2": "npm run prebuild && npm run build:prinsights",
+    "pack:t1": "npm run clean && npm run build:t1 && npm run pack:emailreport",
+    "pack:t2": "npm run clean && npm run build:t2 && npm run pack:prinsights",
+    "e2e:t1": "npm run e2e:emailreport",
+    "e2e:t2": "npm run e2e:prinsights",
+    "build:prinsights": "tsc -p Tasks/pullRequestInsightsTask/tsconfig.json",
+    "build:emailreport": "tsc -p Tasks/emailReportTask/tsconfig.json && node ./commands/postbuild.js emailReport",
+    "pack:emailreport": "node ./commands/package.js emailreport",
+    "pack:prinsights": "node ./commands/package.js pullRequestInsights",
+    "e2e:emailreport": "node js/emailReportExtension/emailReportTask/tests/__e_to_e_tests__/InvokeTest.js",
+    "e2e:prinsights": "node js/pullRequestInsightsExtension/pullRequestInsightsTask/tests/__e_to_e_tests__/InvokeTest.js",
+    "clean": "rimraf dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/azure-devops-engineering-extensions.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/sinon": "^7.0.12",
+    "@types/stats-lite": "^2.2.0",
+    "@types/string-template": "^1.0.2",
+    "azure-devops-node-api": "^10.0.0",
+    "azure-pipelines-task-lib": "^2.8.0",
+    "fsevents": "*",
+    "nodemailer": "^6.3.0",
+    "object-to-xml": "^2.0.0",
+    "performance-now": "^2.1.0",
+    "reflect-metadata": "^0.1.13",
+    "stats-lite": "^2.0.0",
+    "ts-mockito": "^2.3.1",
+    "xslt-processor": "^0.11.5"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.15",
+    "@types/node": "^12.0.4",
+    "@types/q": "^1.5.2",
+    "jest": "^24.8.0",
+    "rimraf": "^2.6.3",
+    "sinon": "^7.3.2",
+    "source-map-loader": "^0.2.3",
+    "tfx-cli": "^0.7.8",
+    "ts-jest": "^26.4.3",
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.5.3"
+  },
+  "optionalDependencies": {
+    "fsevents": "*"
+  }
+}

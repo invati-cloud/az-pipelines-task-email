@@ -1,0 +1,51 @@
+{
+  "manifestVersion": 1,
+  "id": "EmailReportExtension",
+  "name": "Email Report Extension",
+  "version": "1.0.0",
+  "publisher": "Invati Inc.",
+  "public": true,
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "description": "Sends Detailed email report for a build or release pipeline",
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "icons": {
+    "default": "images/icon.png"
+  },
+  "tags": [],
+  "scopes": [],
+  "files": [
+    {
+      "path": "emailReportTask"
+    },
+    {
+      "path": "images",
+      "addressable": true
+    }
+  ],
+  "content": {
+    "details": {
+      "path": "README.md"
+    },
+    "license": {
+      "path": "LICENSE"
+    }
+  },
+  "contributions": [
+    {
+      "id": "EmailReport",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "emailReportTask"
+      }
+    }
+  ]
+}

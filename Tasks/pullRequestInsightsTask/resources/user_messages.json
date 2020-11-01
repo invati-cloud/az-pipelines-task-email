@@ -1,0 +1,28 @@
+{
+  "notInPullRequestMessage": "Nothing occured because this task is not being run from a pull request",
+  "noFailureMessage": "Nothing occured because the {0} has not failed any tasks",
+  "commentCompletedMessage": "Comment was successfully posted",
+  "summaryLine": "\n #### Pull Request Validation Insights",
+  "link": "[{0}]({1})",
+  "smallText": "<small>{0}</small>",
+  "inLineBreak": "<br>",
+
+  "failureCommentTableHeading": "**Failed Validations** \n |Failed Pipeline|{0} Status <small title='Last {2} {0} runs before merge commit'>:grey_question:</small>|Insights|",
+  "failureCommentTableEndName": "failureTable",
+  "newIterationCommentHeading": "__Source Commit: {0}__",
+  "success": ":heavy_check_mark:",
+  "failure": ":x:",
+  "failureTableRow": "|<center>[{0}]({1})</center>|<center> {2} </center>|<center> {3} </center>|",
+  "unhealthy": "{0} branch is [Unhealthy]({1}) <br> Please compare {0} branch failures <br> with current and take appropriate action",
+  "healthy": "{0} branch is [Healthy]({1}) <br> Failure in this PR is likely related to change",
+  "flakey": "{0} branch is [Flakey]({1}) <br> Please compare {0} branch flakiness <br> with current failures and take appropriate action",
+  "noPipelines": "No pipelines found",
+
+  "longRunningValidationCommentTableHeading": "**Long Running Validations** \n |Impacted Pipeline|Regressed Task| Duration [Regression] <small title='Regression calculation based on {1}th percentile of recent {0} runs before commit'>:grey_question:</small>|",
+  "longRunningValidationTableEndName": "longRunningValidationTable",
+  "longRunningValidationCommentFirstSectionRow": "|<center>[{0}]({1})</center>|<center> {2} </center>|<center> {3} </center>|",
+  "longRunningValidationCommentLowerSectionRow": "| |<center> {2} </center>|<center> {3} </center>|",
+  "longRunningMultiAgentLine": "(Regressed on {0}/{1} agents)",
+  "durationWithRegressionFormat": "{0} [<span style='color:red'>+{1}</span>]",
+  "durationRangeFormat": "{0} - <br>{1}"
+}

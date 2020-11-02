@@ -1,3 +1,4 @@
+import tl = require("azure-pipelines-task-lib/task");
 import { EmailReportViewModel } from '../model/viewmodel/EmailReportViewModel';
 import { IHTMLReportCreator } from './IHTMLReportCreator';
 import { Report } from '../model/Report';
@@ -35,9 +36,9 @@ export class HTMLReportCreator implements IHTMLReportCreator {
     
     const bodySetting : string = this.getMailContentInputs(reportConfiguration.$mailConfiguration);
     
-    let bodyfinal = bodySetting + outXmlString;  
+    let bodyfinal = outXmlString.replace("{{EmailBody}}", bodySetting);  
     
-    return outXmlString;
+    return bodyfinal //outXmlString;
   }
 
   private getMailContentInputs(mailconfig: MailConfiguration): string {
@@ -53,6 +54,8 @@ export class HTMLReportCreator implements IHTMLReportCreator {
         }
 
         emailBodyFinal = fs.readFileSync(mailconfig.$emailBodyFile, 'utf8');
+        
+        emailBodyFinal = this.expandVariables(emailBodyFinal);
 
         break;
       case 'inline':
@@ -64,5 +67,16 @@ export class HTMLReportCreator implements IHTMLReportCreator {
       }
 
     return "<p>" + emailBodyFinal + "</p>";    
+    }
+
+    private expandVariables(str : string) : string{
+      let vars = tl.getVariables();
+      let xpstr = str;
+      //console.log("Variables Dumping:");
+      vars.forEach(element => {
+        xpstr = xpstr.replace("$(" + element.name + ")", element.value);      
+        //console.log(`${element.name} : ${element.value}`);
+      });
+      return xpstr;
     }
   }

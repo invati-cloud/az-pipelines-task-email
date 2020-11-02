@@ -88,11 +88,18 @@ export class ConfigurationProvider implements IConfigurationProvider {
     {
       throw new InputError("Email subject not set");
     }
+    console.log(`Subject: ${mailSubject}`);
 
     //additional content inputs
-    const mailBodyContent : string = tl.getInput(TaskConstants.EMAILEMAILBODY_INPUTKEY, false);
-    const mailBodyFile : string = tl.getInput(TaskConstants.EMAILBODYFILE_INPUTKEY, false);
-    const emailBodyFormat : string = tl.getInput(TaskConstants.EMAILBODYFORMAT_INPUTKEY, false);
+    const mailBodyContent : string = tl.getInput(TaskConstants.EMAILEMAILBODY_INPUTKEY);
+    const mailBodyFile : string = tl.getInput(TaskConstants.EMAILBODYFILE_INPUTKEY);
+    const emailBodyFormat : string = tl.getInput(TaskConstants.EMAILBODYFORMAT_INPUTKEY);
+
+    //console.log(`Body: ${emailBody}`);
+    
+    //const emailBodyFormat : string = this.expandVariables(emailBody);
+
+    //console.log(`Body: ${mailBodyContent}`);
 
     // Optional inputs
     const toAddresses = tl.getInput(TaskConstants.TOADDRESS_INPUTKEY, false);
@@ -176,5 +183,5 @@ export class ConfigurationProvider implements IConfigurationProvider {
       case "Team": return GroupTestResultsBy.Team;
       default: return GroupTestResultsBy.Run;
     }
-  }
+  }  
 }

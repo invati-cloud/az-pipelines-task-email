@@ -519,6 +519,9 @@
         <div style="display:none;font-size: 1px;  max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;">
           <xsl:value-of select="EmailReportViewModel/EmailSubject" />
         </div>
+        <div style="display:contents;font-size:initial; max-width:100vh; opacity: 1; overflow: auto;">
+          {{EmailBody}}
+        </div>
         <!-- OUTER WRAPPER -->
         <div class="container"
              style="background:#e8e8e8; min-height:100vh; font-family: Segoe UI, Helvetica, Arial, sans-serif;  color:#444444; font-size:14px; padding: 10px;">

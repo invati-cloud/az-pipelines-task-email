@@ -1,8 +1,8 @@
 {
   "manifestVersion": 1,
   "id": "EmailReportExtension",
-  "name": "Email Report Extension",
-  "version": "1.1.1",
+  "name": "Email Report with SMTP",
+  "version": "1.1.8",
   "publisher": "invati",
   "public": true,
   "targets": [

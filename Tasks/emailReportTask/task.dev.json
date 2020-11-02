@@ -1,7 +1,7 @@
 {
   "id": "f9f30cf0-ac1c-4c82-98a3-6e661643bd39",
   "name": "emailReportTask",
-  "friendlyName": "Email Report (Unstable - for Testing)",
+  "friendlyName": "Email Report with SMTP",
   "description": "Send rich email report for test results and for tasks in this stage",
   "helpMarkDown": "Sets 'EmailReportTask.EmailSent' variable to true if it sent email successfully.",
   "category": "Utility",
@@ -13,7 +13,7 @@
   "version": {
     "Major": 1,
     "Minor": 1,
-    "Patch": 0
+    "Patch": 8
   },
   "groups": [
     {

@@ -3,7 +3,7 @@
   "id": "PullRequestInsightsExtension",
   "name": "Pull Request Insights Extension",
   "version": "1.0.0",
-  "publisher": "Invati Inc.",
+  "publisher": "invati",
   "targets": [
     {
       "id": "Microsoft.VisualStudio.Services"
@@ -27,9 +27,13 @@
       "path": "LICENSE"
     }
   },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/invati-cloud/az-pipelines-task-email"
+  },
   "contributions": [
     {
-      "id": "edf8831c-2354-412b-aad0-03d0c741ac64",
+      "id": "pullRequestInsightsTask",
       "type": "ms.vss-distributed-task.task",
       "targets": ["ms.vss-distributed-task.tasks"],
       "properties": {

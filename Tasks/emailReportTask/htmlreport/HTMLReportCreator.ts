@@ -2,6 +2,8 @@ import { EmailReportViewModel } from '../model/viewmodel/EmailReportViewModel';
 import { IHTMLReportCreator } from './IHTMLReportCreator';
 import { Report } from '../model/Report';
 import { ReportConfiguration } from '../config/ReportConfiguration';
+import { MailConfiguration } from '../config/mail/MailConfiguration';
+import { reject } from 'q';
 const fs = require("fs");
 const o2x = require('object-to-xml');
 const xsltProcessor = require("xslt-processor");
@@ -27,8 +29,40 @@ export class HTMLReportCreator implements IHTMLReportCreator {
     const xsltDoc = xmlParse(buffer.toString(), "application/xml");
     // Fill the XSLT document template with the xml doc data
     let outXmlString = xsltProcess(xmlDoc, xsltDoc);
+
     // XML parsing changes <br/> to special chars if they are part of xml nodevalues. Do string replace to fix the jankiness for HTML.
     outXmlString = outXmlString.split("&lt;br/&gt;").join("<br/>");
+    
+    const bodySetting : string = this.getMailContentInputs(reportConfiguration.$mailConfiguration);
+    
+    let bodyfinal = bodySetting + outXmlString;  
+    
     return outXmlString;
   }
-}
+
+  private getMailContentInputs(mailconfig: MailConfiguration): string {
+    
+    let emailBodyFinal: string;
+
+    switch (mailconfig.$emailBodyFormat.toLowerCase()) {
+      case 'file':
+
+        if (!fs.existsSync(mailconfig.$emailBodyFile)) {
+          reject(`Failed to locate the email file on disk ${mailconfig.$emailBodyFile}`);
+          return "";
+        }
+
+        emailBodyFinal = fs.readFileSync(mailconfig.$emailBodyFile, 'utf8');
+
+        break;
+      case 'inline':
+        emailBodyFinal = mailconfig.$emailBody;
+        break;
+      default:
+        emailBodyFinal = mailconfig.$emailBody;
+        break;
+      }
+
+    return "<p>" + emailBodyFinal + "</p>";    
+    }
+  }

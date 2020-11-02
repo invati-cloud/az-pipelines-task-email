@@ -18,8 +18,7 @@ export class TaskConstants {
   public static readonly USEPREVENV_INPUTKEY = "usePreviousEnvironment";
   public static readonly DEFAULTDOMAIN_INPUTKEY = "defaultDomain";
 
-  public static readonly TEAM_FOUNDATION_KEY: string =
-    "SYSTEM_TEAMFOUNDATIONCOLLECTIONURI";
+  public static readonly TEAM_FOUNDATION_KEY: string = "SYSTEM_TEAMFOUNDATIONCOLLECTIONURI";
   public static readonly VSS_CONNECTION_KEY: string = "SYSTEMVSSCONNECTION";
   public static readonly ACCESS_PARAMETER: string = "ACCESSTOKEN";
   public static readonly PROJECTNAME_KEY: string = "SYSTEM_TEAMPROJECT";
@@ -30,4 +29,8 @@ export class TaskConstants {
 
   public static readonly ENVIRONMENTID_KEY: string = "RELEASE_ENVIRONMENTID";
   public static readonly ENVIRONMENTDEFID_KEY: string = "RELEASE_DEFINITIONENVIRONMENTID";
+
+  public static readonly EMAILBODYFORMAT_INPUTKEY = "emailBodyFormat";
+  public static readonly EMAILBODYFILE_INPUTKEY = "EmailBodyFile";
+  public static readonly EMAILEMAILBODY_INPUTKEY = "EmailBody";
 }

@@ -24,7 +24,8 @@ export class EmailSender implements IReportSender {
 
     const smtpHost = smtpUrl.hostname;
     let smtpPort = smtpUrl.port;
-    smtpPort = isNullOrUndefined(smtpUrl.port) ? 587 : smtpUrl.port;
+    //smtpPort = isNullOrUndefined(smtpUrl.port) ? 587 : smtpUrl.port;
+    smtpPort = (smtpUrl.port === null || smtpUrl.port === undefined) ? 587 : smtpUrl.port;
 
     console.log(`Using HostName: ${smtpHost} and port: ${smtpPort}`);
 

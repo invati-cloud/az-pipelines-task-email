@@ -89,6 +89,11 @@ export class ConfigurationProvider implements IConfigurationProvider {
       throw new InputError("Email subject not set");
     }
 
+    //additional content inputs
+    const mailBodyContent : string = tl.getInput(TaskConstants.EMAILEMAILBODY_INPUTKEY, false);
+    const mailBodyFile : string = tl.getInput(TaskConstants.EMAILBODYFILE_INPUTKEY, false);
+    const emailBodyFormat : string = tl.getInput(TaskConstants.EMAILBODYFORMAT_INPUTKEY, false);
+
     // Optional inputs
     const toAddresses = tl.getInput(TaskConstants.TOADDRESS_INPUTKEY, false);
     const ccAddresses = tl.getInput(TaskConstants.CCADDRESS_INPUTKEY, false);
@@ -102,6 +107,9 @@ export class ConfigurationProvider implements IConfigurationProvider {
     const defaultDomain = tl.getInput(TaskConstants.DEFAULTDOMAIN_INPUTKEY, true);
 
     this.mailConfiguration = new MailConfiguration(mailSubject, toRecipientsConfiguration, ccRecipientsConfiguration, smtpConfig, defaultDomain);
+    this.mailConfiguration.$emailBody = mailBodyContent;
+    this.mailConfiguration.$emailBodyFile = mailBodyFile;
+    this.mailConfiguration.$emailBodyFormat = emailBodyFormat;
   }
 
   private initReportDataConfiguration(): void {
@@ -114,14 +122,17 @@ export class ConfigurationProvider implements IConfigurationProvider {
     // optional inputs
     const includeResultsStr = tl.getInput(TaskConstants.INCLUDERESULTS_INPUTKEY, false);
     const groupTestSummaryByStr = tl.getInput(TaskConstants.GROUPTESTSUMMARYBY_INPUTKEY, false);
+    
 
     const groupTestSummaryBy: Array<GroupTestResultsBy> = new Array();
-    if (!isNullOrUndefined(groupTestSummaryByStr)) {
+    //if (!isNullOrUndefined(groupTestSummaryByStr)) {
+    if (!(groupTestSummaryByStr === null || groupTestSummaryByStr === undefined)) {
       (groupTestSummaryByStr as string).split(",").forEach(element => { groupTestSummaryBy.push(this.getGroupTestResultsByEnumFromString(element)) });
     }
 
     // derived input values
-    const includeResultsConfig = isNullOrUndefined(includeResultsStr) ? [] : includeResultsStr.split(",");
+    //const includeResultsConfig = isNullOrUndefined(includeResultsStr) ? [] : includeResultsStr.split(",");
+    const includeResultsConfig = (includeResultsStr===null || includeResultsStr === undefined) ? [] : includeResultsStr.split(",");
     const includeFailedTests = includeResultsConfig.includes("1");
     const includeOtherTests = includeResultsConfig.includes("2");
     const includePassedTests = includeResultsConfig.includes("3");

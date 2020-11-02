@@ -8,6 +8,9 @@ export class MailConfiguration {
   private ccRecipientsConfig: RecipientsConfiguration;
   private smtpConfig: SmtpConfiguration;
   private defaultDomain: string;
+  private emailBodyFile: string;
+  private emailBodyFormat: string;
+  private emailBody: string;
 
   constructor($mailSubject: string, $toRecipientsConfig: RecipientsConfiguration, $ccRecipientsConfig: RecipientsConfiguration, $smtpConfig: SmtpConfiguration, $defaultDomain: string) {
     this.mailSubject = $mailSubject;
@@ -63,6 +66,49 @@ export class MailConfiguration {
  */
   public set $mailSubject(value: string) {
     this.mailSubject = value;
+  }
+
+  /** 
+  * Setter $emailBodyFile
+  * @param {string} value
+  */
+  public set $emailBodyFile(value: string) {
+    this.emailBodyFile = value;
+  }
+  /**
+   * Getter $emailBodyFile
+   * @returns {string}
+   */
+  public get $emailBodyFile(): string {
+    return this.emailBodyFile;
+  }
+  /**
+   * Setter $emailBodyFormat
+   * @param {string} value
+   */
+  public set $emailBodyFormat(value: string) {
+    this.emailBodyFormat = value;
+  }
+  /**
+   * Getter $emailBodyFormat
+   * @returns {string}
+   */
+  public get $emailBodyFormat(): string {
+    return this.emailBodyFormat;
+  }
+  /**
+   * Setter $emailBody
+   * @param {string} value
+   */
+  public set $emailBody(value: string) {
+    this.emailBody = value;
+  }
+  /**
+   * Getter $emailBody
+   * @returns {string}
+   */
+  public get $emailBody() {
+    return this.emailBody;
   }
 
 }

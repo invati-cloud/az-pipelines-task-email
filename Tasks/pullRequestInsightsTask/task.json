@@ -1,6 +1,6 @@
 {
     "id": "edf8831c-2354-412b-aad0-03d0c741ac64",
-    "name": "PRInsightsPP",
+    "name": "pullRequestInsightsTask",
     "friendlyName": "PR Insights Pre-Production",
     "description": "Gets insight into pull requests",
     "helpMarkDown": "",

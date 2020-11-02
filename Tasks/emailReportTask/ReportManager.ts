@@ -5,6 +5,7 @@ import { IReportSender } from "./IReportSender";
 import { IHTMLReportCreator } from "./htmlreport/IHTMLReportCreator";
 import { MissingDataError } from "./exceptions/MissingDataError";
 import { EnumUtils } from "./utils/EnumUtils";
+import { MailConfiguration } from "./config/mail/MailConfiguration";
 
 export class ReportManager {
 
@@ -41,5 +42,5 @@ export class ReportManager {
     }
 
     return mailSent;
-  }
+  }  
 }
